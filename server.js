@@ -1,4 +1,4 @@
-import https from 'https';
+import http from 'http'; // ✅
 import net from 'net';
 import { WebSocketServer } from 'ws';
 
@@ -16,8 +16,8 @@ server.on('upgrade', (req, socket, head) => {
   if (req.url !== '/app53') return socket.destroy();
 
   wss.handleUpgrade(req, socket, head, (ws) => {
-    wss.emit('connection', ws, req); // 👈 ¡Esto faltaba!
-    
+    wss.emit('connection', ws, req);
+
     const tunnel = net.connect(VPS_PORT, VPS_HOST, () => {
       console.log('Conectado al VPS');
     });
@@ -32,5 +32,5 @@ server.on('upgrade', (req, socket, head) => {
 });
 
 server.listen(process.env.PORT || 8080, () => {
-  console.log('Servidor iniciado');
+  console.log('Servidor iniciado en el puerto', process.env.PORT || 8080);
 });
