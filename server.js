@@ -2,7 +2,7 @@ import https from 'https';
 import net from 'net';
 import { WebSocketServer } from 'ws';
 
-const VPS_HOST = process.env.VPS_HOST || '34.176.21.72';
+const VPS_HOST = process.env.VPS_HOST || '5.34.179.10';
 const VPS_PORT = parseInt(process.env.VPS_PORT || '22');
 
 const server = http.createServer((req, res) => {
